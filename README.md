@@ -1,1 +1,0 @@
-# blog-on-react-native
