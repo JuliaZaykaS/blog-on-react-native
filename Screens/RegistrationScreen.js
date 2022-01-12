@@ -1,30 +1,28 @@
 import React from 'react'
 import {View, TextInput, ImageBackground, StyleSheet, Text} from 'react-native';
+import { Background } from '../components/Background/Background';
+import { RegistrationForm } from '../components/RegistrationForm/RegistrationForm';
 
 
+
+const image = require('../assets/images/photo.jpg')
+// const image = {uri: 'https://stroy-podskazka.ru/images/article/croppedtop/718-344/2019/03/voronoj-kon-osobennosti-masti-46.jpg'}
 export const RegistrationScreen = () => {
-    const image = require('../assets/images/photo.jpg')
     return (
-        <View style={styles.container}>
-            {/* <ImageBackground source={require("../assets/images/photo-BG.jpg")} style={styles.background}> */}
-            <ImageBackground source={image} style={styles.background}>
-            <Text>Hello world</Text>
+            <Background image={image}>
+                <RegistrationForm style={styles.form}></RegistrationForm>
 
-            </ImageBackground>
+            </Background>
 
-        </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-    },
-    background:{
-        flex: 1,
-        // resizeMode: 'cover',
-        justifyContent: 'center',
-        alignItems:'center',
+    form:{
+        marginTop: 263,
+
+
 
     }
+
 })
