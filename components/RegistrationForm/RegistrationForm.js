@@ -1,37 +1,57 @@
-import React from "react";
-import { View, TextInput, StyleSheet, Text, Button, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
+import { Title } from "../Title/Title";
 
-export const RegistrationForm = ({ className }) => {
+export const RegistrationForm = () => {
+  const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   return (
-    // <View style={`${styles.container} ${className}`}>
     <View style={styles.container}>
-      <View style={styles.form}>
-        <Text style={styles.title}>Регистрация</Text>
-        <TextInput placeholder="Логин" style={styles.input} />
-        <TextInput placeholder="Адрес электронной почты" style={styles.input} />
-        <TextInput
-          placeholder="Пароль"
-          style={styles.input}
-          secureTextEntry={true}
-        />
-
-        <TouchableOpacity style={[styles.button, styles.btnSignup ]} activeOpacity={0.7}>
-          <Text style={styles.btnSignupText}>Зарегистрироваться</Text>
-
-        </TouchableOpacity>
-        {/* <Button title="Зарегистрироваться" style={styles.button} color="#FF6C00"/> */}
-        {/* <Button title="Уже есть аккаунт? Войти" color='transparent'/> */}
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.btnLoginText}>Уже есть аккаунт? Войти</Text>
-
-        </TouchableOpacity>
-        {/* <Button
-  onPress={onPressLearnMore}
-  title="Learn More"
-  color="#841584"
-  accessibilityLabel="Learn more about this purple button"
-/> */}
-      </View>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        <View style={{...styles.form, marginBottom: isShowKeyboard ? 32 : 66}}>
+          <Title title={"Регистрация"}></Title>
+          <TextInput
+            placeholder="Логин"
+            style={styles.input}
+            onFocus={() => {
+              setIsShowKeyboard(true);
+            }}
+          />
+          <TextInput
+            placeholder="Адрес электронной почты"
+            style={styles.input}
+            onFocus={() => {
+              setIsShowKeyboard(true);
+            }}
+          />
+          <TextInput
+            placeholder="Пароль"
+            style={styles.input}
+            secureTextEntry={true}
+            onFocus={() => {
+              setIsShowKeyboard(true);
+            }}
+          />
+          <TouchableOpacity
+            style={[styles.button, styles.btnSignup]}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.btnSignupText}>Зарегистрироваться</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.btnLoginText}>Уже есть аккаунт? Войти</Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
     </View>
   );
 };
@@ -51,20 +71,7 @@ const styles = StyleSheet.create({
   form: {
     marginHorizontal: 16,
   },
-  title: {
-    fontFamily: "Roboto",
-    fontStyle: "normal",
-    fontWeight: "500",
-    fontSize: 30,
-    lineHeight: 35,
-    textAlign: "center",
-    // letterSpacing: '0.01em',
-    color: "#212121",
-    marginBottom: 33,
-  },
   input: {
-    // minWidth: 320,
-    // maxWidth: 343,
     backgroundColor: "#F6F6F6",
     borderWidth: 1,
     borderColor: "#E8E8E8",
@@ -72,31 +79,20 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 16,
     padding: 16,
-    // marginHorizontal: 16,
   },
-  button:{
+  button: {
     borderRadius: 100,
     padding: 16,
-    justifyContent:'center',
-    alignItems:'center',
-
-
+    justifyContent: "center",
+    alignItems: "center",
   },
-  btnSignup:{
-    backgroundColor:"#FF6C00",
-
+  btnSignup: {
+    backgroundColor: "#FF6C00",
   },
-  btnSignupText:{
-    color: '#FFFFFF',
-    // textAlign: 'center',
+  btnSignupText: {
+    color: "#FFFFFF",
   },
-  btnLoginText:{
-    // textAlign: 'center',
-    color: '#1B4371',
-
-  }
-  // btnSignup:{
-  //   backgroundColor:"#FF6C00"
-
-  // }
+  btnLoginText: {
+    color: "#1B4371",
+  },
 });

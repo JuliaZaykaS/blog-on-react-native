@@ -10,7 +10,7 @@ const image = require('../assets/images/photo.jpg')
 export const RegistrationScreen = () => {
     return (
             <Background image={image}>
-                <RegistrationForm style={styles.form}></RegistrationForm>
+                <RegistrationForm ></RegistrationForm>
 
             </Background>
 
@@ -18,11 +18,11 @@ export const RegistrationScreen = () => {
 }
 
 const styles = StyleSheet.create({
-    form:{
-        marginTop: 263,
+    // form:{
+        // marginTop: 263,
 
 
 
-    }
+    // }
 
 })
