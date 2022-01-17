@@ -13,25 +13,25 @@ import {
 import { Title } from "../Title/Title";
 
 const initialState = {
-name: '',
-email: '',
-password:'',
-}
+  name: "",
+  email: "",
+  password: "",
+};
 
 export const RegistrationForm = () => {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
-  const [regData, setRegData] = useState(initialState)
+  const [regData, setRegData] = useState(initialState);
 
   const hideKeyboard = () => {
     setIsShowKeyboard(false);
     Keyboard.dismiss();
     // setRegData(initialState)
   };
-  const submitForm=()=>{
-    hideKeyboard()
-    setRegData(initialState)
+  const submitForm = () => {
+    hideKeyboard();
+    setRegData(initialState);
     console.log(regData);
-  }
+  };
 
   // const onChangeInput = (e)=>{
   // const onChangeInput = (name,value)=>{
@@ -60,16 +60,18 @@ export const RegistrationForm = () => {
           <View
             style={{ ...styles.form, marginBottom: isShowKeyboard ? 32 : 66 }}
           >
-            <Title title={"Регистрация"}></Title>
+            <Title title={"Регистрация"} style={styles.title}></Title>
             <TextInput
               placeholder="Логин"
               style={styles.input}
               value={regData.name}
-              name={'name'}
+              name={"name"}
               // onChange={onChangeInput}
               // onChangeText={onChangeInput}
               // onChangeText={(name,value)=>onChangeInput(name,value)}
-              onChangeText={(value)=>setRegData(prev=> ({...prev, name:value}))}
+              onChangeText={(value) =>
+                setRegData((prev) => ({ ...prev, name: value }))
+              }
               onFocus={() => {
                 setIsShowKeyboard(true);
               }}
@@ -78,10 +80,12 @@ export const RegistrationForm = () => {
               placeholder="Адрес электронной почты"
               style={styles.input}
               value={regData.email}
-              name={'email'}
+              name={"email"}
               // onChangeText={onChangeInput(name,value)}
               // onChangeText={(name,value)=>onChangeInput(name,value)}
-              onChangeText={(value)=>setRegData(prev=> ({...prev, email:value}))}
+              onChangeText={(value) =>
+                setRegData((prev) => ({ ...prev, email: value }))
+              }
               // onChangeText={onChangeInput}
               // onChange={onChangeInput}
               onFocus={() => {
@@ -98,7 +102,9 @@ export const RegistrationForm = () => {
               // name={'password'}
               // onChangeText={onChangeInput(name,value)}
               // onChangeText={(name,value)=>onChangeInput(name,value)}
-              onChangeText={(value)=>setRegData(prev=> ({...prev, password:value}))}
+              onChangeText={(value) =>
+                setRegData((prev) => ({ ...prev, password: value }))
+              }
               onFocus={() => {
                 setIsShowKeyboard(true);
               }}
@@ -141,6 +147,16 @@ const styles = StyleSheet.create({
   form: {
     marginHorizontal: 16,
   },
+  title: {
+    // fontFamily: "Roboto-Medium",
+    fontFamily: "Roboto-Bold",
+    fontStyle: "normal",
+    fontWeight: '700',
+    fontSize: 30,
+    lineHeight: 35,
+    // letterSpacing: 0.01em,
+    color: "#212121",
+  },
   input: {
     backgroundColor: "#F6F6F6",
     borderWidth: 1,
@@ -149,6 +165,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 16,
     padding: 16,
+    fontFamily: 'Roboto-Regular',
+fontStyle: 'normal',
+fontWeight: '400',
+fontSize: 16,
+lineHeight: 19,
+color: '#BDBDBD',
   },
   button: {
     borderRadius: 100,
