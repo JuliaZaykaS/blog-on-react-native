@@ -1,9 +1,11 @@
 import React from 'react'
 import { Text, StyleSheet } from "react-native";
 
-export const Title = ({title}) => {
+export const Title = ({title,style}) => {
+    // console.log(style);
     return (
-        <Text style={styles.title}>
+        <Text style={{...styles.title, ...style}}>
+        {/* // <Text style={[...styles.title, style].join(' ')}> */}
             {title}
         </Text>
     )
@@ -11,7 +13,9 @@ export const Title = ({title}) => {
 
 const styles=StyleSheet.create({
     title:{
-            fontFamily: "Roboto",
+            fontFamily: "Roboto-Medium",
+            // fontFamily: "Roboto",
+            // fontFamily: "Roboto-Bold",
             fontStyle: "normal",
             fontWeight: "500",
             fontSize: 30,
@@ -19,7 +23,7 @@ const styles=StyleSheet.create({
             textAlign: "center",
             // letterSpacing: '0.01em',
             color: "#212121",
-            marginBottom: 33,
+            // marginBottom: 33,
 
     }
 })

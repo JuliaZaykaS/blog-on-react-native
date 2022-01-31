@@ -3,7 +3,7 @@
     "name": "blog-on-react-native",
     "slug": "blog-on-react-native",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
