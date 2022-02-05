@@ -16,26 +16,25 @@ import { useState, useEffect } from "react";
 
   // console.log(loadFonts());
   const margins = 16*2;
+  // const window = Dimensions.get("window").width;
+  // console.log(window);
+// const screen = Dimensions.get("screen");
 
 export default function App() {
-  const [loaded] = useFonts({
-    // RobotoRegular: require("./assets/fonts/Roboto-Regular.ttf"),
-    // RobotoMedium: require("./assets/fonts/Roboto-Medium.ttf"),
-    // RobotoBold: require("./assets/fonts/Roboto-Bold.ttf"),
-    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
-    "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
-    "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
-  })
-  if(!loaded){
-    return null
-  }
+  // const [dimensions, setDimensions] = useState({ window });
+  const [dimensions, setDimensions] = useState(Dimensions.get('window').width - margins);
 
-  const [dimensions, setDimensions] = useState(Dimensions.get('window').width-margins);
-  // const [dimensions, setDimensions] = useState(Dimensions.get('window').width-16*2);
   useEffect(() => {
+    // const subscription = Dimensions.addEventListener(
+    //   "change",
+    //   ({ window }) => {
+    //     setDimensions({ window:window.width });
+    //   }
+    // );
+    // return () => subscription?.remove();
     const onChange = ()=>{
-      // const width = Dimensions.get('window').width -16*2;
-      const width = Dimensions.get('window').width - margins;
+      const width = Dimensions.get('window').width -16*2;
+      // const width = Dimensions.get('window').width - margins;
       setDimensions(width)
 
     }
@@ -49,6 +48,19 @@ export default function App() {
       // Dimensions.removeEventListener('change', onChange)
     // };
   }, []);
+  const [loaded] = useFonts({
+    // RobotoRegular: require("./assets/fonts/Roboto-Regular.ttf"),
+    // RobotoMedium: require("./assets/fonts/Roboto-Medium.ttf"),
+    // RobotoBold: require("./assets/fonts/Roboto-Bold.ttf"),
+    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
+    "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
+    "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
+  })
+  if(!loaded){
+    return null
+  }
+
+  // const [dimensions, setDimensions] = useState(Dimensions.get('window').width-16*2);
 
 
 
@@ -78,6 +90,6 @@ const styles = StyleSheet.create({
     // fontWeight: '900',
     // backgroundColor: '#fff',
     // alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
 });
