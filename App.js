@@ -1,9 +1,9 @@
-import * as Font from "expo-font";
+// import * as Font from "expo-font";
 import { useFonts } from 'expo-font';
 import { StyleSheet, Text, View, ImageBackground, Dimensions } from "react-native";
-import { RegistrationScreen } from "./Screens/RegistrationScreen";
+import { LoginScreen } from "./Screens/LoginScreen";
 // import { AppLoading } from "expo";
-import AppLoading from 'expo-app-loading';
+// import AppLoading from 'expo-app-loading';
 import { useState, useEffect } from "react";
 
 // const loadFonts = async () => {
@@ -78,7 +78,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <RegistrationScreen></RegistrationScreen>
+      {/* <RegistrationScreen></RegistrationScreen> */}
+<LoginScreen></LoginScreen>
     </View>
   );
 }
