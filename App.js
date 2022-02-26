@@ -1,28 +1,40 @@
 // import * as Font from "expo-font";
-import { useFonts } from 'expo-font';
-import { StyleSheet, Text, View, ImageBackground, Dimensions } from "react-native";
+import { useFonts } from "expo-font";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  Dimensions,
+} from "react-native";
 import { LoginScreen } from "./Screens/LoginScreen";
+import { RegistrationScreen } from "./Screens/RegistrationScreen";
 // import { AppLoading } from "expo";
 // import AppLoading from 'expo-app-loading';
 import { useState, useEffect } from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
 
 // const loadFonts = async () => {
 //   await Font.loadAsync({
-  //     "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
-  //     "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
-  //     "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
-  //   });
-  // };
+//     "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
+//     "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
+//     "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
+//   });
+// };
 
-  // console.log(loadFonts());
-  const margins = 16*2;
-  // const window = Dimensions.get("window").width;
-  // console.log(window);
+// console.log(loadFonts());
+const margins = 16 * 2;
+const AuthStack = createStackNavigator();
+// const window = Dimensions.get("window").width;
+// console.log(window);
 // const screen = Dimensions.get("screen");
 
 export default function App() {
   // const [dimensions, setDimensions] = useState({ window });
-  const [dimensions, setDimensions] = useState(Dimensions.get('window').width - margins);
+  const [dimensions, setDimensions] = useState(
+    Dimensions.get("window").width - margins
+  );
 
   useEffect(() => {
     // const subscription = Dimensions.addEventListener(
@@ -32,20 +44,18 @@ export default function App() {
     //   }
     // );
     // return () => subscription?.remove();
-    const onChange = ()=>{
-      const width = Dimensions.get('window').width -16*2;
+    const onChange = () => {
+      const width = Dimensions.get("window").width - 16 * 2;
       // const width = Dimensions.get('window').width - margins;
-      setDimensions(width)
-
-    }
+      setDimensions(width);
+    };
     // Dimensions.addEventListener('change', onChange)
-    const subscription = Dimensions.addEventListener('change', onChange)
+    const subscription = Dimensions.addEventListener("change", onChange);
 
-    return () => subscription?.remove()
+    return () => subscription?.remove();
     // {
 
-
-      // Dimensions.removeEventListener('change', onChange)
+    // Dimensions.removeEventListener('change', onChange)
     // };
   }, []);
   const [loaded] = useFonts({
@@ -55,14 +65,12 @@ export default function App() {
     "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
     "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
     "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
-  })
-  if(!loaded){
-    return null
+  });
+  if (!loaded) {
+    return null;
   }
 
   // const [dimensions, setDimensions] = useState(Dimensions.get('window').width-16*2);
-
-
 
   // const [isFontsLoaded, setIsFontsLoaded] = useState(false);
 
@@ -77,10 +85,16 @@ export default function App() {
   // }
 
   return (
-    <View style={styles.container}>
-      {/* <RegistrationScreen></RegistrationScreen> */}
-<LoginScreen></LoginScreen>
-    </View>
+    <NavigationContainer>
+      <View style={styles.container}>
+        <AuthStack.Navigator>
+          <AuthStack.Screen name="Login" component={LoginScreen} />
+          <AuthStack.Screen name="Register" component={RegistrationScreen} />
+        </AuthStack.Navigator>
+        {/* <RegistrationScreen></RegistrationScreen> */}
+        {/* <LoginScreen></LoginScreen> */}
+      </View>
+    </NavigationContainer>
   );
 }
 
